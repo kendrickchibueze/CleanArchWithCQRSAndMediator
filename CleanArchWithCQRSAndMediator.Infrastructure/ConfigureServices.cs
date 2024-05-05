@@ -12,10 +12,8 @@ namespace CleanArchWithCQRSAndMediator.Infrastructure
         public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<BlogDbContext>(options =>
-            {
                 options.UseSqlite(configuration.GetConnectionString("DefaultConn") ?? 
-                    throw new InvalidOperationException("Connection String not found "));
-            });
+                    throw new InvalidOperationException("Connection String not found ")));
 
             services.AddTransient<IBlogRepository, BlogRepository>();
             return services;
